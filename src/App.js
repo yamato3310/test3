@@ -21,4 +21,16 @@ class App extends component {
             ]
         }
     }
+
+    render() {
+        return ( 
+        <div className = "app" >
+            <hi> todoアプリを作ってみた </hi> 
+            <TodoList todos = { this.state.todos }
+            /> 
+            </div>
+        );
+    }
 }
+
+export default App
