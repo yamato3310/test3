@@ -5,12 +5,12 @@ import './css/App.css'
 class App extends component {
     constructor() {
         super()
-        this.state = {
-            todo: [{
+        const todos = [
+                    {
                     id: 1,
                     title: "Hello, React",
                     desc: "React始めました",
-                    done: folse
+                    done: false
                 },
                 {
                     id: 2,
@@ -19,15 +19,39 @@ class App extends component {
                     done: false
                 },
             ]
+            this.state = {
+                todos: todos,
+                countTodo: todos.length + 1,
+            }
         }
-    }
+
+        handlesubmit(e) {
+            e.preventDefault();
+            const title = e.target.title.value;
+            const desc = e.target.desc.value;
+            const todos = this.state.todos.slice()
+            const countTodo = this.state.countTodo
+
+            todos.push({
+                id: countTodo,
+                title: title,
+                desc: desc,
+                done: false
+            });
+
+            this.setState({todos})
+            this.setState({countTodo: countTodo + 1})
+
+            e.target.title.value ='';
+            e.target.desc.value = '';
+        }
 
     render() {
         return ( 
         <div className = "app" >
             <hi> todoアプリを作ってみた </hi> 
-            <TodoList todos = { this.state.todos }
-            /> 
+            <Form handlesubmit={this.handlesubmit.bind(this)} />
+            <TodoList todos = { this.state.todos }/> 
             </div>
         );
     }
