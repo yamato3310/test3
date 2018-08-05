@@ -5,7 +5,7 @@ class Form extends Comment {
     render() {
         return (
             <div className="form">
-                <form>
+                <form onSubmit={this.props.handleSubmit}>
                     <input name="title" type="text" placeholder="タイトル　※必須" defaultValue="reactの勉強" /><br/>
                     <textarea name="desc" placeholder="説明入力" defaultValue="todoアプリを作っています"></textarea>
                     <button type="submit">todoを製作</button>
@@ -14,5 +14,6 @@ class Form extends Comment {
         )
     }
 }
+
 
 export default Form

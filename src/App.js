@@ -46,12 +46,21 @@ class App extends component {
             e.target.desc.value = '';
         }
 
+        setTodostatus(clickTodo) {
+            const todos = this.state.todos.slice();
+            const todo = todos[clickTodo.id - 1];
+            todo.done = !todo.done;
+            todos[clickTodo.id - 1] = todo;
+
+            this.setState({todos});
+        }
+
     render() {
         return ( 
         <div className = "app" >
             <hi> todoアプリを作ってみた </hi> 
             <Form handlesubmit={this.handlesubmit.bind(this)} />
-            <TodoList todos = { this.state.todos }/> 
+            <TodoList todos = { this.state.todos } setTodostatus={this.setTodostatus.bind(this)}/> 
             </div>
         );
     }
