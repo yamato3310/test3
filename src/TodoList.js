@@ -8,6 +8,7 @@ class TodoList extends Component {
             <Todo
                 key={todo.id}
                 {...todo}
+                setTodostatue={this.props.setTodostatue}
             />
         )
 
